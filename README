@@ -1,0 +1,45 @@
+appium测试项目
+
+参考链接：
+http://appium.io/docs/en/about-appium/getting-started/index.html
+https://github.com/appium/java-client
+https://github.com/appium/java-client/wiki
+https://github.com/appium/java-client/tree/master/docs
+http://www.testclass.net/appium/appium-base-summary/
+https://www.jianshu.com/p/3c5ee599a20d
+官方api：https://appium.io/docs/en/about-appium/api/
+基础命令示例：https://www.cnblogs.com/georgexu/p/11224240.html
+https://www.jianshu.com/p/2662ec47415e
+
+使用步骤：
+1、安装jdk，配置环境变量
+2、安装Android studio，否则需要单独安装android sdk及安卓一些工具及安卓模拟器
+国内下载地址：https://www.androiddevtools.cn/index.html#sdk-tools
+官网下载地址：https://developer.android.google.cn/studio
+安卓studio指南：https://developer.android.google.cn/studio/intro
+安卓模拟器相关：https://developer.android.google.cn/studio/run/emulator
+安卓相关文档入口：https://developer.android.google.cn/docs
+3、配置安卓环境变量，否则appium server找不到ANDROID_HOME会报错，配置完安卓环境变量，最好重启下appium server，否则可能不生效
+4、安装Appium-Desktop，相当于appium的server端，用于接收appium client的请求，然后找到安卓虚拟机或者真实机器进行执行，安装完之后进行配置，主要配置ip和端口，默认端口4723
+5、新建appium client工程，引入相关依赖，注意appium是依赖于selenium包的
+6、编写执行自动化测试命令
+
+安卓测试 UI Automator：
+https://developer.android.com/training/testing/ui-automator.html#ui-automator-apis
+示例：https://github.com/android/testing-samples/blob/master/ui/uiautomator/BasicSample/app/src/androidTest/java/com/example/android/testing/uiautomator/BasicSample/ChangeTextBehaviorTest.java
+
+注意的点：
+1、安卓环境变量，指定ANDROID_HOME，同时添加platform-tools和tools到path中
+export ANDROID_HOME=/Users/wanghb/Library/Android/sdk
+export PATH="/Users/wanghb/Library/Android/sdk/platform-tools:/Users/wanghb/Library/Android/sdk/tools:$PATH"
+
+2、定义环境变量后才能启动appium server 否则可能出现找不到ANDROID_HOME的问题，不知道为什么
+
+3、安卓中获取appPackage及appActivity的参考链接：
+https://blog.csdn.net/mtbaby/article/details/78676477
+https://blog.csdn.net/u011159607/article/details/79658698
+如果能获取到apk文件又可以解压的话在解压后的AndroidManifest.xml能找到appPackage及appActivity
+
+4\INSTALL_FAILED_NO_MATCHING_ABIS is when you are trying to install an app that has native libraries and it doesn't have a native library for your cpu architecture.
+For example if you compiled an app for armv7 and are trying to install it on an emulator that uses the Intel architecture instead it will not work.
+
